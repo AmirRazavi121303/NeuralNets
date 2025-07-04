@@ -20,3 +20,5 @@ def init_params(): #initializing weights and biases, weights are initally random
     W2 = np.random.randn(64, 10) * 0.01
     b2 = np.zeroes(1,10)
     return W1, b1, W2, b2
+
+
