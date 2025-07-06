@@ -7,7 +7,7 @@ As of July 6th 2025 I have initialized parameters for forward propogation, as I 
 
 Backprop is a whole other beast...
 
-I don't want to try and learn the mathematics as I have lot's of gaps in my knowledge. 
+I don't want to spend too much time on the advanced mathematics for gradient descent as I have lot's of gaps in my knowledge. 
 After some more time and lessons in differential equations and linear algebra, I'll revisit the back prop
 
 What I've learned:
