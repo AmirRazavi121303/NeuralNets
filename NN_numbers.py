@@ -1,27 +1,34 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
-train_data = np.array(pd.read_csv("/Users/amir/Downloads/CodeAmir/NeuralNets/MNIST as csv/mnist_train.csv"))
+train_data = np.array(pd.read_csv("/Users/amir/Downloads/CodeAmir/NeuralNets/MNIST as csv/mnist_train.csv")).T
 
-test_data = np.array(pd.read_csv("/Users/amir/Downloads/CodeAmir/NeuralNets/MNIST as csv/mnist_test.csv"))
+test_data = np.array(pd.read_csv("/Users/amir/Downloads/CodeAmir/NeuralNets/MNIST as csv/mnist_test.csv")).T
 
 r_1, c_1 = train_data.shape #r for rows, c for columns
 r_2, c_2 = test_data.shape
 
-y_train = train_data[:, 0]
+y_train = train_data[:1]
 x_train = train_data[:, 1:]
 
-y_test = test_data[:, 0]
+y_test = test_data[:1]
 x_test = test_data[:, 1:]
 
-def init_params(): #initializing weights and biases, weights are initally random but then optimized with backpropagation, biases are an array of zeroes, but get optimized later
-    W1 = np.random.rand(784, 64) * 0.01
-    b1 = np.zeroes(1,64)
-    W2 = np.random.rand(64, 10) * 0.01
-    b2 = np.zeroes(1,10)
+#now we have 784 values in every column and 60000 of these columns
+print(r_1, c_1)
+print(y_train[0:10])
+print(x_train[1])
+
+#step 1: set matrices with random weights and biases
+def init_params(): 
+    W1 = np.random.rand(64, 784) * 0.01
+    b1 = np.zeroes(64, 1)
+    W2 = np.random.rand(10, 64) * 0.01
+    b2 = np.zeroes(10, 1)
     return W1, b1, W2, b2
 
-def ReLU(Z):
+def ReLU(Z): #for fun try implementing different types of sigmoid functions
     return np.maximum(0, Z) #goes thru every value of the array (Z) if Z > 0 
 
 def softmax(Z):
